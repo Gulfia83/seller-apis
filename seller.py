@@ -12,7 +12,7 @@ logger = logging.getLogger(__file__)
 
 
 def get_product_list(last_id, client_id, seller_token):
-    """Получить список товаров магазина озон
+    """Получить список товаров магазина озон.
     
     Аргументы:
         last_id (str): Последний артикул
@@ -42,7 +42,7 @@ def get_product_list(last_id, client_id, seller_token):
 
 
 def get_offer_ids(client_id, seller_token):
-    """Получить артикулы товаров магазина озон
+    """Получить артикулы товаров магазина озон.
 
     Аргументы:
         client_id (str): Идентификатор клиента (id клиенты на Озон)
@@ -68,7 +68,7 @@ def get_offer_ids(client_id, seller_token):
 
 
 def update_price(prices: list, client_id, seller_token):
-    """Обновить цены товаров
+    """Обновить цены товаров.
     
     Аргументы:
         prices (list): Список с ценами
@@ -91,7 +91,7 @@ def update_price(prices: list, client_id, seller_token):
 
 
 def update_stocks(stocks: list, client_id, seller_token):
-    """Обновить остатки
+    """Обновить остатки.
 
     Аргументы:
         stocs (list): список остатков товаров
@@ -114,7 +114,7 @@ def update_stocks(stocks: list, client_id, seller_token):
 
 
 def download_stock():
-    """Скачать файл ostatki с сайта casio
+    """Скачать файл ostatki с сайта casio.
     
     Возвращаемые значения:
         dict: Словарь с остатками часов на складе(не на ОЗОН)
@@ -140,7 +140,7 @@ def download_stock():
 
 
 def create_stocks(watch_remnants, offer_ids):
-    """Сформируем остатки для часов, продающихся на Озон
+    """Сформируем остатки для часов, продающихся на Озон.
     
     Аргументы:
         watch_remnants (dict): Словарь с остатками часов на складе(не на ОЗОН)
@@ -170,7 +170,7 @@ def create_stocks(watch_remnants, offer_ids):
 
 
 def create_prices(watch_remnants, offer_ids):
-    """Сформируем цены для часов, продающихся на Озон
+    """Сформируем цены для часов, продающихся на Озон.
 
     Аргументы:
         watch_remnants (dict): Словарь с остатками часов на складе(не на ОЗОН)
@@ -195,7 +195,7 @@ def create_prices(watch_remnants, offer_ids):
 
 
 def price_conversion(price: str) -> str:
-    """Преобразовать цену. 
+    """Преобразовать цену.
     
     Аргументы:
         price (str): цена
@@ -210,7 +210,7 @@ def price_conversion(price: str) -> str:
 
 
 def divide(lst: list, n: int):
-    """Разделить список lst на части по n элементов
+    """Разделить список lst на части по n элементов.
     
     Аргументы:
         lst (list): список элементов
@@ -221,7 +221,7 @@ def divide(lst: list, n: int):
 
     """
     for i in range(0, len(lst), n):
-        yield lst[i : i + n]
+        yield lst[i:i + n]
 
 
 async def upload_prices(watch_remnants, client_id, seller_token):
@@ -242,6 +242,12 @@ async def upload_stocks(watch_remnants, client_id, seller_token):
 
 
 def main():
+    """Обновление остатков и цен на часы, продаваемые на Озон.
+
+    Возвращаемые значения: Меняет остатки и цены на часы,
+    либо выдает исключения.
+
+    """
     env = Env()
     seller_token = env.str("SELLER_TOKEN")
     client_id = env.str("CLIENT_ID")
